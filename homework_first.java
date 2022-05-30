@@ -1,8 +1,6 @@
 import java.io.*;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.math.BigInteger;
 import java.util.Scanner;
+//пока что input.txt не используется
 
 public class homework_first {
     public static void main(String[] args) {
@@ -15,15 +13,17 @@ public class homework_first {
         File f = new File("output.txt");
         if (f.exists() && !f.isDirectory()) {
             System.out.println("файл уже существует.перезаписать?1-да,0-нет");
-            int think = iScanner.nextInt();
+            Scanner consoleScan = new Scanner(System.in);
+            int think = consoleScan.nextInt();
             if (think == 1)
                 try (FileWriter fw = new FileWriter("output.txt", false)) {
                     if (a == 0 & b == 0)
                         fw.write("Ответ:не определено");
-                    else
+                    else {
                         fw.write("Ответ:");
-                    fw.write(Double.toString(res));
-                    fw.flush();
+                        fw.write(Double.toString(res));
+                        fw.flush();
+                    }
                 } catch (IOException ex) {
                     System.out.println(ex.getMessage());
                 }
